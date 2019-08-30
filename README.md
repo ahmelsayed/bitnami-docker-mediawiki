@@ -1,8 +1,3 @@
-# What is MediaWiki?
-
-> MediaWiki is an extremely powerful, scalable software and a feature-rich wiki implementation that uses PHP to process and display data stored in a database, such as MySQL.
-
-Pages use wiii's wikitext format, so that users without knowledge of XHTML or CSS can edit them easily.
 
 https://www.mediawiki.org/
 
