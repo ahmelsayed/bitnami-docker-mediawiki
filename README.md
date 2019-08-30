@@ -2,7 +2,7 @@
 
 > MediaWiki is an extremely powerful, scalable software and a feature-rich wiki implementation that uses PHP to process and display data stored in a database, such as MySQL.
 
-Pages use MediaWiki's wikitext format, so that users without knowledge of XHTML or CSS can edit them easily.
+Pages use wiii's wikitext format, so that users without knowledge of XHTML or CSS can edit them easily.
 
 https://www.mediawiki.org/
 
@@ -30,34 +30,7 @@ $ docker-compose up -d
 
 Deploying Bitnami applications as Helm Charts is the easiest way to get started with our applications on Kubernetes. Read more about the installation in the [Bitnami MediaWiki Chart GitHub repository](https://github.com/bitnami/charts/tree/master/upstreamed/mediawiki).
 
-Bitnami containers can be used with [Kubeapps](https://kubeapps.com/) for deployment and management of Helm Charts in clusters.
-
-# Supported tags and respective `Dockerfile` links
-
-> NOTE: Debian 8 images have been deprecated in favor of Debian 9 images. Bitnami will not longer publish new Docker images based on Debian 8.
-
-Learn more about the Bitnami tagging policy and the difference between rolling tags and immutable tags [in our documentation page](https://docs.bitnami.com/containers/how-to/understand-rolling-tags-containers/).
-
-
-* [`1-ol-7`, `1.33.0-ol-7-r39` (1/ol-7/Dockerfile)](https://github.com/bitnami/bitnami-docker-mediawiki/blob/1.33.0-ol-7-r39/1/ol-7/Dockerfile)
-* [`1-debian-9`, `1.33.0-debian-9-r39`, `1`, `1.33.0`, `1.33.0-r39`, `latest` (1/debian-9/Dockerfile)](https://github.com/bitnami/bitnami-docker-mediawiki/blob/1.33.0-debian-9-r39/1/debian-9/Dockerfile)
-
-Subscribe to project updates by watching the [bitnami/mediawiki GitHub repo](https://github.com/bitnami/bitnami-docker-mediawiki).
-
-# Prerequisites
-
-To run this application you need Docker Engine 1.10.0. It is recommended that you use Docker Compose version 1.6.0 or later.
-
-# How to use this image
-
-## Run MediaWiki with a Database Container
-
-Running MediaWiki with a database server is the recommended way. You can either use docker-compose or run the containers manually.
-
-## Run the application using Docker Compose
-
-The main folder of this repository contains a functional [`docker-compose.yml`](https://github.com/bitnami/bitnami-docker-mediawiki/blob/master/docker-compose.yml) file. Run the application using it as shown below:
-
+Bitnami containers can b
 ```bash
 $ curl -sSL https://raw.githubusercontent.com/bitnami/bitnami-docker-mediawiki/master/docker-compose.yml > docker-compose.yml
 $ docker-compose up -d
@@ -230,33 +203,6 @@ mediawiki:
 Available variables:
 
 ##### User and Site configuration
-
-- `MEDIAWIKI_USERNAME`: Mediawiki application username. Default: **user**
-- `MEDIAWIKI_PASSWORD`: Mediawiki application password. Default: **bitnami123**
-- `MEDIAWIKI_EMAIL`: Mediawiki application email. Default: **user@example.com**
-- `MEDIAWIKI_WIKI_NAME`: Mediawiki wiki name. Default: **Bitnami MediaWiki**
-
-##### Use an existing database
-
-- `MARIADB_HOST`: Hostname for MariaDB server. Default: **mariadb**
-- `MARIADB_PORT_NUMBER`: Port used by MariaDB server. Default: **3306**
-- `MEDIAWIKI_DATABASE_NAME`: Database name that MediaWiki will use to connect with the database. Default: **bitnami_mediawiki**
-- `MEDIAWIKI_DATABASE_USER`: Database user that MediaWiki will use to connect with the database. Default: **bn_mediawiki**
-- `MEDIAWIKI_DATABASE_PASSWORD`: Database password that MediaWiki will use to connect with the database. No defaults.
-- `ALLOW_EMPTY_PASSWORD`: It can be used to allow blank passwords. Default: **no**
-
-##### Create a database for MediaWiki using mysql-client
-
-- `MARIADB_HOST`: Hostname for MariaDB server. Default: **mariadb**
-- `MARIADB_PORT_NUMBER`: Port used by MariaDB server. Default: **3306**
-- `MARIADB_ROOT_USER`: Database admin user. Default: **root**
-- `MARIADB_ROOT_PASSWORD`: Database password for the `MARIADB_ROOT_USER` user. No defaults.
-- `MYSQL_CLIENT_CREATE_DATABASE_NAME`: New database to be created by the mysql client module. No defaults.
-- `MYSQL_CLIENT_CREATE_DATABASE_USER`: New database user to be created by the mysql client module. No defaults.
-- `MYSQL_CLIENT_CREATE_DATABASE_PASSWORD`: Database password for the `MYSQL_CLIENT_CREATE_DATABASE_USER` user. No defaults.
-- `ALLOW_EMPTY_PASSWORD`: It can be used to allow blank passwords. Default: **no**
-
-##### SMTP Configuration
 
 To configure Mediawiki to send email using SMTP you can set the following environment variables:
 
@@ -460,36 +406,6 @@ services:
       - 'mariadb_data:/bitnami'
   mediawiki:
     build: .
-    environment:
-      - MARIADB_HOST=mariadb
-      - MARIADB_PORT_NUMBER=3306
-      - MEDIAWIKI_DATABASE_USER=bn_mediawiki
-      - MEDIAWIKI_DATABASE_NAME=bitnami_mediawiki
-      - ALLOW_EMPTY_PASSWORD=yes
-    ports:
-      - '80:8181'
-      - '443:8143'
-    volumes:
-      - 'mediawiki_data:/bitnami'
-    depends_on:
-      - mariadb
-volumes:
-  mariadb_data:
-    driver: local
-  mediawiki_data:
-    driver: local
-```
-
-# Notable Changes
-
-## 1.32.1-debian-9-r20 and 1.32.1-ol-7-r33
-
-- This image has been adapted so it's easier to customize. See the [Customize this image](#customize-this-image) section for more information.
-- The Apache configuration volume (`/bitnami/apache`) has been deprecated, and support for this feature will be dropped in the near future. Until then, the container will enable the Apache configuration from that volume if it exists. By default, and if the configuration volume does not exist, the configuration files will be regenerated each time the container is created. Users wanting to apply custom Apache configuration files are advised to mount a volume for the configuration at `/opt/bitnami/apache/conf`, or mount specific configuration files individually.
-- The PHP configuration volume (`/bitnami/php`) has been deprecated, and support for this feature will be dropped in the near future. Until then, the container will enable the PHP configuration from that volume if it exists. By default, and if the configuration volume does not exist, the configuration files will be regenerated each time the container is created. Users wanting to apply custom PHP configuration files are advised to mount a volume for the configuration at `/opt/bitnami/php/conf`, or mount specific configuration files individually.
-- Enabling custom Apache certificates by placing them at `/opt/bitnami/apache/certs` has been deprecated, and support for this functionality will be dropped in the near future. Users wanting to enable custom certificates are advised to mount their certificate files on top of the preconfigured ones at `/certs`.
-
-# Contributing
 
 We'd love for you to contribute to this container. You can request new features by creating an [issue](https://github.com/bitnami/bitnami-docker-mediawiki/issues), or submit a [pull request](https://github.com/bitnami/bitnami-docker-mediawiki/pulls) with your contribution.
 
