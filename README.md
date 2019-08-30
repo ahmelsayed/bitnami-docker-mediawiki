@@ -16,37 +16,15 @@ $ docker-compose up -d
 ```
 
 # Why use Bitnami Images?
-  $ tar cfz ~/backup-mediawiki-images.tar.gz images
-  $ tar cfz ~/backup-mediawiki-skins.tar.gz skins
-  ```
+s
+df
+sdf
+sdf
 
-2. Copy the backup files to your TARGET installation:
-
-  ```bash
-  $ scp ~/backup-mediawiki-* YOUR_USERNAME@TARGET_HOST:~
-  ```
-
-3. Create the Mediawiki Container as described in the section [How to use this Image (Using Docker Compose)](https://github.com/bitnami/bitnami-docker-mediawiki#using-docker-compose)
-
-4. Wait for the initial setup to finish. You can follow it with
-
-  ```bash
-  $ docker-compose logs -f mediawiki
-  ```
-
-  and press `Ctrl-C` when you see this:
-
-  ```
-  nami    INFO  mediawiki successfully initialized
-  Starting mediawiki ...
-  ```
-
-5. Stop Apache:
-
-  ```bash
-  $ cd ~
-  $ docker-compose exec mariadb mysql -u root -pROOT_PASSWORD
-  $ MariaDB [(none)]> drop database bitnami_mediawiki;
+s
+dfs
+dfsdf
+p database bitnami_mediawiki;
   $ MariaDB [(none)]> create database bitnami_mediawiki;
   $ MariaDB [(none)]> grant all privileges on bitnami_mediawiki.* to 'bn_mediawiki'@'%' identified by 'PASSWORD_OBTAINED_IN_STEP_6';
   $ MariaDB [(none)]> exit
